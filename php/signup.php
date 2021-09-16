@@ -35,7 +35,7 @@ if(isset($_POST["confirmPassword"]) && $_POST["confirmPassword"] != "" ) {
 
 
 
-$sql1="Select * from users where email=?"; #Check if the email already exists in the database
+$sql1="Select * from users where email=?"; 
 $stmt1 = $connection->prepare($sql1);
 $stmt1->bind_param("s",$email);
 $stmt1->execute();
@@ -43,7 +43,7 @@ $result = $stmt1->get_result();
 $row = $result->fetch_assoc();
 
 if(empty($row)){
-$sql2 = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`) VALUES (?, ?, ?, ?);"; #add the new user to the database
+$sql2 = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`) VALUES (?, ?, ?, ?);"; 
 $hash = hash('sha256', $password);
 $stmt2 = $connection->prepare($sql2);
 $stmt2->bind_param("ssss",$first_name,$last_name,$email,$hash);

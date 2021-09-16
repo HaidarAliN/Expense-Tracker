@@ -38,7 +38,7 @@ session_start();
 </br>
 
 <div class="row text-content">
-<input type="hidden" id=<?php echo "user"; ?> value=<?php echo  $_SESSION["id"] ?>>
+<input type="hidden" id="user" value=<?php echo  $_SESSION["id"] ?>>
     <div class="col-md-3"></div>
     <div class="col-md-6">
                 <div class="text-content">

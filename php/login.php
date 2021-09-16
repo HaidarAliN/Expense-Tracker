@@ -16,7 +16,7 @@ if (isset($_POST["password"]) and $_POST["password"] !="")
 		die("Try again next time");
 	}
 $hash = hash('sha256', $password);
-$sql1="Select * from users where email=? and password=?"; #Check if the email already exists in the database
+$sql1="Select * from users where email=? and password=?"; 
 $stmt1 = $connection->prepare($sql1);
 $stmt1->bind_param("ss",$email,$hash);
 $stmt1->execute();

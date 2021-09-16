@@ -5,7 +5,7 @@ $index=0;
 $response = [];
  
 $id = $_POST["id"];
-$sql2="Select * from categories where user_id=$id"; #Check if the email already exists in the database
+$sql2="Select * from categories where user_id=$id"; 
 $stmt2 = $connection->prepare($sql2);
 $stmt2->execute();
 $result2 = $stmt2->get_result();

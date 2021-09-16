@@ -19,9 +19,7 @@ $(document).ready(function(){
             var user_id = "#user";
             var user_id_value = $(user_id).val();
             var table_row_id = "#tr"+ lastChar; 
-    
             if(idname == "delete"){
-    
                 const deleteexpense = async () => {
                     var requestObject = {expense_id: item_id_value};
                     const dele = await fetch("php/api/deleteexpenseapi.php", {
@@ -38,15 +36,12 @@ $(document).ready(function(){
                       }
                 };
                 deleteexpense();
-    
             }else{
                 var id = "#tr" + lastChar;
                 $('#ecategorie').val($(id).find("td:eq(0)").text());
                 $('#edate').val($(id).find("td:eq(2)").text());
                 $('#eamount').val($(id).find("td:eq(1)").text().slice(0,-1));
                 lc = lastChar;
-                    
-
             }
         });
       }
@@ -55,10 +50,7 @@ $(document).ready(function(){
     $.fn.chartfn = function(){ 
         $('#chart').empty();
         $('#chart').html('<canvas id="mycanvas" width="256" height="256"></canvas>');
-
         var ctx = $("#mycanvas").get(0).getContext("2d");
-        //pie chart data
-        //sum of values = 360
         var user_id = "#user";
         var user_id_value = $(user_id).val();
         $.post("php/api/getallcategoryapi.php",
@@ -69,7 +61,6 @@ $(document).ready(function(){
             pie_array = [];
             pie_sub_array = {};
             var i = 0;
-            
             data.forEach(data => {
                 pie_array.push({value: parseInt(data['amount']), label : data['category'],color: getRandomColor()});
                 i++;
@@ -86,7 +77,6 @@ $(document).ready(function(){
     }
 
     $.fn.getexpenses = function(){ 
-    
         const getexpense = async () => {
             var tr = "";
             var user_id = "#user";
@@ -152,13 +142,8 @@ $(document).ready(function(){
     }
 
     $.fn.getcategories();
-    
     $.fn.getexpenses();
     $.fn.chartfn();
-
-
-
-
 
     $('#addr').on('click', function(){
         var date=  $('#date').val();
@@ -201,7 +186,6 @@ $(document).ready(function(){
         addexp();
         $('#addr').attr('data-dismiss', 'modal');
     }
-        
     });
 
     $('#edit').on('click', function(){
@@ -236,8 +220,6 @@ $(document).ready(function(){
                 $("#demolist2").empty();
                 $.fn.getcategories();
                 $.fn.chartfn();
-                
-
                 var idt = "#tr" + lc;
                 var newtr = "";
                 newtr += "<th scope='row'>*</th><input type='hidden' id='expense"+ lc +"' value='"+ id + "'>";
@@ -246,10 +228,6 @@ $(document).ready(function(){
                 $(idt).empty();
                 $(idt).html(newtr);
                 $.fn.link();
-                // $('#ecategorie').val($(id).find("td:eq(0)").text());
-                // $('#edate').val($(id).find("td:eq(2)").text());
-                // $('#eamount').val($(id).find("td:eq(1)").text().slice(0,-1));
-
             }
         }
         addexp();
